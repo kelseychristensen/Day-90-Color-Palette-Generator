@@ -8,6 +8,7 @@ This website will generate a color palette from the image provided. </p>
 ## Links
 
 - [Repo](https://github.com/kelseychristensen/Day-90-Color-Palette-Generator "palette")
+- [Livelink](https://palette-generator.onrender.com/ "livelink")
 
 ## Screenshots
 
