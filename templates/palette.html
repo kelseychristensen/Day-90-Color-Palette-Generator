@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Color Palette Generator</title>
+
+    <!-- CSS -->
+  <link href="{{ url_for('static', filename='styles.css')}}" rel="stylesheet">
+
+
+    <!-- Bootstrap -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c3b019000f.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+
+<div class="btn_container">
+<a href="{{ url_for('home') }}"><button type="button" class="btn btn-dark">New Palette</button></a>
+</div>
+
+<div class="vh-auto">
+
+{% set rows = 4 %}
+{% set cols = 4 %}
+
+
+{% for item in list %}
+
+    {% if loop.index0 // rows != (loop.index0 - 1) // rows %}
+        <div class="row">
+    {% endif %}
+
+
+<div class="col-3" style="background: {{ item }}">
+
+<p style="color: rgb(255,255,255,50%">{{ item }}</p>
+</div>
+
+    {% if loop.index0 % cols  == 3 %}
+        </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+</body>
+
+
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+</html>
