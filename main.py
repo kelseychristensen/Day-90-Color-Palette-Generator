@@ -6,6 +6,7 @@ from wtforms import IntegerField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
 from flask_wtf.file import FileField
 from werkzeug.utils import secure_filename
+import heic_to_jpg
 
 class Form(FlaskForm):
     file = FileField(validators=[DataRequired()])
@@ -36,6 +37,8 @@ def home():
     form = Form()
     if request.method == "POST":
         filename = secure_filename(form.file.data.filename)
+        if ".heic" in filename:
+            filename = heic_to_jpg(filename)
         form.file.data.save('static/uploads/' + filename)
         color_list = colors(f'static/uploads/{filename}', form.num_colors.data)
         return render_template('palette.html', list=color_list, number_colors=form.num_colors.data)
